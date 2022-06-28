@@ -220,7 +220,17 @@ for first_array in data_transpose:
         first_value = second_array[0] # 12
         second_value = second_array[1] # 16
         expand_value = []
-        fuzzification = (second_value - first_value) / 7 # 16 - 12 / 7 = 0.57
+        fuzzifications = (second_value - first_value) / 7 # 16 - 12 / 7 = 0.57
+        # get two after comma
+        fuzzification_to_string = str(fuzzifications)
+        fuzzification_split = fuzzification_to_string.split(".")
+        fuzz_s_1 = fuzzification_split[0]
+        fuzz_s_2 = fuzzification_split[1]
+        fuzz_s_2_cut = fuzz_s_2[:2]
+        fuzz_bil = (fuzz_s_1, fuzz_s_2_cut)
+        fuzz_s_join = ".".join(fuzz_bil)
+        # end
+        fuzzification = float(fuzz_s_join)
         if(fuzzification == 0):
             for i in range(first_value, second_value+1):
                 expand_value.append(i)
@@ -235,7 +245,8 @@ for first_array in data_transpose:
                 else:
                     value = value + fuzzification
                 if(value < second_value):
-                    value_pushed = round(value, 2)
+                    value_cut = "%.2f" % value
+                    value_pushed = float(value_cut)
                     expand_value.append(value_pushed)
                 initial = initial + 1
         data = [second_array, expand_value]
@@ -244,8 +255,8 @@ for first_array in data_transpose:
     fuzzy_value.append(fuzzy_value_pushed)
     relevant_value.append(second_array_pushed)
 
-# print(fuzzy_value)
-# print("")
+print(fuzzy_value)
+print("")
 
 # 3. Russel Ranking
 russel_value = []
