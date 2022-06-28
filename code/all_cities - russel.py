@@ -153,6 +153,17 @@ def sort_array(receive_tsp_route):
             j = j + 1
     return final_tsp_route
 
+def get_two_after_comma(bil):
+    fuzzification_to_string = str(bil)
+    fuzzification_split = fuzzification_to_string.split(".")
+    fuzz_s_1 = fuzzification_split[0]
+    fuzz_s_2 = fuzzification_split[1]
+    fuzz_s_2_cut = fuzz_s_2[:2]
+    fuzz_bil = (fuzz_s_1, fuzz_s_2_cut)
+    new_bils = ".".join(fuzz_bil)
+    new_bil = float(new_bils)
+    return new_bil
+
 # main program
 # 1. Matriks biaya tsp
 total = []
@@ -221,16 +232,7 @@ for first_array in data_transpose:
         second_value = second_array[1] # 16
         expand_value = []
         fuzzifications = (second_value - first_value) / 7 # 16 - 12 / 7 = 0.57
-        # get two after comma
-        fuzzification_to_string = str(fuzzifications)
-        fuzzification_split = fuzzification_to_string.split(".")
-        fuzz_s_1 = fuzzification_split[0]
-        fuzz_s_2 = fuzzification_split[1]
-        fuzz_s_2_cut = fuzz_s_2[:2]
-        fuzz_bil = (fuzz_s_1, fuzz_s_2_cut)
-        fuzz_s_join = ".".join(fuzz_bil)
-        # end
-        fuzzification = float(fuzz_s_join)
+        fuzzification = get_two_after_comma(fuzzifications)
         if(fuzzification == 0):
             for i in range(first_value, second_value+1):
                 expand_value.append(i)
@@ -255,9 +257,6 @@ for first_array in data_transpose:
     fuzzy_value.append(fuzzy_value_pushed)
     relevant_value.append(second_array_pushed)
 
-print(fuzzy_value)
-print("")
-
 # 3. Russel Ranking
 russel_value = []
 for russel_first_array in fuzzy_value:
@@ -265,14 +264,11 @@ for russel_first_array in fuzzy_value:
     for russel_second_array in russel_first_array:
         second_array = russel_second_array[1]
         total_sum_array = sum(second_array)
-        russel = round(1/8 * total_sum_array, 2)
+        russel_to_split = round(1/8 * total_sum_array, 2)
+        russel = russel_to_split
         russels.append(russel)
     russel_value.append(russels)
 robust_value_transpose = [list(i) for i in zip(*russel_value)]
-
-print("")
-print(robust_value_transpose)
-print("")
 
 datas = []
 row_index = 0
@@ -379,4 +375,4 @@ print("")
 
 sorted_array_tsp = sort_array(tsp_route)
 print("Rute Sorted [Row, Column]: ", sorted_array_tsp)
-print("Biaya total minimal metode alternate adalah: ", sum(total))
+print("Total waktu minimal metode alternate adalah: ", sum(total)," Menit")
