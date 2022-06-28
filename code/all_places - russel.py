@@ -13,17 +13,17 @@ def find_array_will_be_remove(minimum_array_extract):
             old_identities.append(new_identity)
     return identities
 
-def delete_row(receive_new_robust_value, receive_array_remove_with_index):
+def delete_row(receive_new_russel_val, receive_array_remove_with_index):
     minus = 0
     for remove_row in receive_array_remove_with_index:
         row = remove_row[1] - minus
-        receive_new_robust_value.pop(row)
+        receive_new_russel_val.pop(row)
         minus = minus + 1
-    return receive_new_robust_value
+    return receive_new_russel_val
 
-def get_col(receive_new_robust_value, receive_array_remove_with_index):
+def get_col(receive_new_russel_val, receive_array_remove_with_index):
     index = receive_array_remove_with_index[0][1]
-    row = receive_new_robust_value[index]
+    row = receive_new_russel_val[index]
     len_row = len(row)
     if((len_row == 1) and ( row[0] == 0)):
         col_min_value = 0
@@ -44,9 +44,9 @@ def find_array_will_be_remove_smallest_value(receive_smallest_result):
     smallest_array_will_remove_with_key = smallest_array_will_remove_with_keys[0]
     return smallest_array_will_remove_with_key
 
-def find_minimum_array(receive_robust_value_transpose):
+def find_minimum_array(receive_russel_val_transpose):
     minimum_array = []
-    for first_min_array in receive_robust_value_transpose:
+    for first_min_array in receive_russel_val_transpose:
         minimum_value = min([i for i in first_min_array if i != 0])
         key_minimum = first_min_array.index(minimum_value)
         data = [minimum_value, key_minimum]
@@ -64,37 +64,37 @@ def find_array_remove_with_index(receive_minimum_array):
         index_key = index_key + 1
     return array_remove_with_index
 
-def delete_col(receive_robust_value_transpose_col, receive_array_remove_col):
+def delete_col(receive_russel_val_transpose_col, receive_array_remove_col):
     min = 0
-    if(len(receive_robust_value_transpose_col) > 0):
+    if(len(receive_russel_val_transpose_col) > 0):
         for remove_col in receive_array_remove_col:
             rcol = remove_col
             col = rcol - min
-            receive_robust_value_transpose_col.pop(col)
+            receive_russel_val_transpose_col.pop(col)
             min = min + 1
     else:
-        receive_robust_value_transpose_col = receive_robust_value_transpose_col
-    return receive_robust_value_transpose_col
+        receive_russel_val_transpose_col = receive_russel_val_transpose_col
+    return receive_russel_val_transpose_col
 
-def delete_column_small_value(receive_robust_value_transpose_col, receive_array_remove_col):
-    if(len(receive_robust_value_transpose_col) > 0):
+def delete_column_small_value(receive_russel_val_transpose_col, receive_array_remove_col):
+    if(len(receive_russel_val_transpose_col) > 0):
         row = receive_array_remove_col[0]
-        array = receive_robust_value_transpose_col.pop(row)
-        return receive_robust_value_transpose_col
+        array = receive_russel_val_transpose_col.pop(row)
+        return receive_russel_val_transpose_col
 
-def find_smallest_value(receive_new_robust_value):
+def find_smallest_value(receive_new_russel_val):
     smallest_results = []
-    for first_array_smallest in receive_new_robust_value:
+    for first_array_smallest in receive_new_russel_val:
         first_array_smallest.sort()
         if(first_array_smallest[0] == 0):
-            if(len(robust_value[0]) > 2):
+            if(len(russel_val[0]) > 2):
                 smallest_result = first_array_smallest[2] - first_array_smallest[1]
-            elif(len(robust_value[0]) > 1):
+            elif(len(russel_val[0]) > 1):
                 smallest_result = first_array_smallest[1]
             else:
                 smallest_result = first_array_smallest[0]
         else:
-            if(len(robust_value[0]) > 1):
+            if(len(russel_val[0]) > 1):
                 smallest_result = first_array_smallest[1] - first_array_smallest[0]
             else:
                 smallest_result = first_array_smallest[0]
@@ -113,10 +113,10 @@ def find_index_row(receive_row, receive_sort):
              key.append(i)
     return key
 
-def push_total(receive_robust_value, receive_array_small_to_remove):
+def push_total(receive_russel_val, receive_array_small_to_remove):
     row = receive_array_small_to_remove[0][1]
-    receive_robust_value[row].sort()
-    ss = receive_robust_value[row]
+    receive_russel_val[row].sort()
+    ss = receive_russel_val[row]
     len_row = len(ss)
     if((len_row == 1) and ( ss[0] == 0)):
         value = 0
@@ -178,7 +178,7 @@ total = []
 #     [[3, 10], [2, 9], [9, 16], [7, 14], [6, 13], [0,0]]
 # ]
 
-## 4 Cities
+## 4 Places
 # data = [
 #     [[0, 0], [3, 17], [8, 15], [5, 12]],
 #     [[14, 21], [0,0], [19, 33], [20, 27]],
@@ -186,7 +186,7 @@ total = []
 #     [[23, 30], [27, 34], [25, 39], [0,0]]
 # ]
 
-## 5 Cities
+## 5 Places
 # data = [
 #     [[0, 0], [4, 18], [6, 20], [5, 12], [10, 17]],
 #     [[3, 10], [0,0], [14, 21], [8, 22], [17, 24]],
@@ -195,7 +195,7 @@ total = []
 #     [[22, 29], [10, 17], [23, 30], [25, 39], [0,0]]
 # ]
 
-# # 6 Cities
+# # 6 Places
 # data = [
 #     [[0, 0], [4, 11], [20, 27], [10, 24], [6, 20], [9, 23]],
 #     [[13, 27], [0,0], [7, 21], [14, 21], [11, 25], [13, 20]],
@@ -268,11 +268,11 @@ for russel_first_array in fuzzy_value:
         russel = russel_to_split
         russels.append(russel)
     russel_value.append(russels)
-robust_value_transpose = [list(i) for i in zip(*russel_value)]
+russel_val_transpose = [list(i) for i in zip(*russel_value)]
 
 datas = []
 row_index = 0
-for position in robust_value_transpose:
+for position in russel_val_transpose:
     row_col = 0
     datas_each_row = []
     for each_posisition in position:
@@ -286,7 +286,7 @@ for position in robust_value_transpose:
 
 # 4. Alternate method
 ## a. Find minimum value for each row
-minimum_array = find_minimum_array(robust_value_transpose)
+minimum_array = find_minimum_array(russel_val_transpose)
 
 ## b. Delete row & col
 ### Delete row
@@ -301,51 +301,51 @@ for tsp_route_loop in array_remove_with_index:
     tsp_route_data = tsp_route_loop[1], tsp_route_loop[0][1]
     tsp_route.append(tsp_route_data)
 
-delete_row(robust_value_transpose, array_remove_with_index) # delete rows
+delete_row(russel_val_transpose, array_remove_with_index) # delete rows
 delete_row(datas, array_remove_with_index)
 
 ### Delete col
-robust_value_transpose_col = [list(i) for i in zip(*robust_value_transpose)]
+russel_val_transpose_col = [list(i) for i in zip(*russel_val_transpose)]
 datas_transpose_col = [list(i) for i in zip(*datas)]
 
 array_remove_col = find_array_will_be_remove(minimum_array)
 array_remove_col.sort()
 
-robust_value_transpose_col = delete_col(robust_value_transpose_col, array_remove_col) #delete col
+russel_val_transpose_col = delete_col(russel_val_transpose_col, array_remove_col) #delete col
 delete_col(datas_transpose_col, array_remove_col) #delete col
 
-robust_value = [list(i) for i in zip(*robust_value_transpose_col)]
+russel_val = [list(i) for i in zip(*russel_val_transpose_col)]
 datas = [list(i) for i in zip(*datas_transpose_col)]
 
-len_robust_value = len(robust_value)
+len_russel_val = len(russel_val)
 
 count = 0
-while (count < len_robust_value):
+while (count < len_russel_val):
     ## c. Selection the small values
-    index_row_has_value = [list(i) for i in zip(*robust_value_transpose_col)]
-    index_row_has_value_sort = [list(i) for i in zip(*robust_value_transpose_col)]
+    index_row_has_value = [list(i) for i in zip(*russel_val_transpose_col)]
+    index_row_has_value_sort = [list(i) for i in zip(*russel_val_transpose_col)]
 
-    smallest_results = find_smallest_value(robust_value)
+    smallest_results = find_smallest_value(russel_val)
     array_small_to_remove = find_array_will_be_remove_smallest_value(smallest_results) 
 
     ## d. Delete row & col
     ### Delete row
-    robust_value = [list(i) for i in zip(*robust_value_transpose_col)]
+    russel_val = [list(i) for i in zip(*russel_val_transpose_col)]
     datas_value = [list(i) for i in zip(*datas_transpose_col)]    
     route_row = array_small_to_remove[0][1]
 
-    del_col = get_col(robust_value, array_small_to_remove)
+    del_col = get_col(russel_val, array_small_to_remove)
     key_row = array_small_to_remove[0][1]
     key_col = del_col[0]
     row_col_return = datas_value[key_row][key_col]
     tsp_route.append(row_col_return)
 
-    push_total(robust_value, array_small_to_remove)
-    delete_row(robust_value, array_small_to_remove) # delete rows
+    push_total(russel_val, array_small_to_remove)
+    delete_row(russel_val, array_small_to_remove) # delete rows
     delete_row(datas_value, array_small_to_remove) # delete rows
 
     ### Delete col
-    robust_value_transpose_col = [list(i) for i in zip(*robust_value)]
+    russel_val_transpose_col = [list(i) for i in zip(*russel_val)]
     datas_transpose_col = [list(i) for i in zip(*datas_value)]
     
     array_small_to_remove = find_array_will_be_remove_smallest_value(smallest_results)
@@ -353,7 +353,7 @@ while (count < len_robust_value):
     array_adjust = array_small_to_remove[0][1]
     row = index_row_has_value[array_adjust]
     # sorted
-    robust_value_transpose_col_sort = [list(i) for i in zip(*robust_value)]
+    russel_val_transpose_col_sort = [list(i) for i in zip(*russel_val)]
     array_small_to_remove_sort = find_array_will_be_remove_smallest_value(smallest_results)
     array_adjust_sort = array_small_to_remove_sort[0][1]
     sort = index_row_has_value_sort[array_adjust_sort]
@@ -363,9 +363,9 @@ while (count < len_robust_value):
     route_col = index_row[0]
     tsp_route_row_col = [route_row, route_col]
 
-    delete_column_small_value(robust_value_transpose_col, del_col) #delete 
+    delete_column_small_value(russel_val_transpose_col, del_col) #delete 
     delete_column_small_value(datas_transpose_col, del_col) #delete col
-    robust_value = [list(i) for i in zip(*robust_value_transpose_col)]
+    russel_val = [list(i) for i in zip(*russel_val_transpose_col)]
     datas_value = [list(i) for i in zip(*datas_transpose_col)]
     count = count + 1
     
@@ -375,4 +375,4 @@ print("")
 
 sorted_array_tsp = sort_array(tsp_route)
 print("Rute Sorted [Row, Column]: ", sorted_array_tsp)
-print("Total waktu minimal metode alternate adalah: ", sum(total)," Menit")
+print("Total waktu minimal metode alternate adalah: ", round(sum(total), 2)," Menit")
